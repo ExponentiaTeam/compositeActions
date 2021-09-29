@@ -1,12 +1,17 @@
 # compositeActions
 Composite actions for CI
 
-Example:
+## Current actions:
+- Cache for Yarn Install
+- Cache for Bundle Install
 
-rubocop:
+## Example:
+```
+  rubocop:
     name: rubocop
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
-    - uses: exponentiaTeam/compositeActions/yarnInstall
+    - uses: ExponentiaTeam/compositeActions/bundleInstall@master
     - run: bundle exec rubocop
+```
