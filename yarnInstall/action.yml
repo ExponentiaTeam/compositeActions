@@ -1,0 +1,14 @@
+name: "yarnInstall"
+description: "Instala yarn usando la cache."
+
+runs:
+  using: "composite"
+  steps: 
+    - name: Cache Yarn Install
+      uses: actions/cache@v2
+      with:
+        path: '**/node_modules'
+        key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}-1
+    - name: Yarn Install
+      shell: bash
+      run: yarn install

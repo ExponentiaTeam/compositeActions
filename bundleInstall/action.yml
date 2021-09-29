@@ -1,0 +1,16 @@
+name: "Accion"
+description: "Instala bundle install usando la cache en vendor/bundle"
+
+runs:
+  using: "composite"
+  steps: 
+    - name: Cache Bundle Install
+      uses: actions/cache@v2
+      with:
+        path: vendor/bundle
+        key: ${{ runner.os }}-gems-${{ hashFiles('**/Gemfile.lock') }}-1
+    - name: Bundle install
+      shell: bash
+      run: |
+        bundle config path vendor/bundle
+        bundle install
